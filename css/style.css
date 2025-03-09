@@ -51,6 +51,9 @@
     cursor: pointer;
     transition: 0.5s;
 }
+.prev:focus, .next:focus {
+    outline: 2px solid yellow;
+}
 .prev{
     left: 10px;
     background-color: seagreen;
