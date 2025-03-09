@@ -9,45 +9,44 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentSlide = 0;
 
     // Create dots
-    for ( let i=0; i<slideCount; i++ ) {
+    for (let i = 0; i < slideCount; i++) {
         let dot = document.createElement('span');
-        if(i === 0){
+        if (i === 0) {
             dot.classList.add('active');
         }
         dot.classList.add('dot');
-        dot.attribute('data-index', i);
+        dot.setAttribute('data-index', i);
         dotsContainer.appendChild(dot);
-
     }
 
     let dots = document.querySelectorAll('.dot');
 
-    function updateSlider(index){
-        if(index >= slideCount){
+    function updateSlider(index) {
+        if (index >= slideCount) {
             currentSlide = 0;
-        }else if(index < 0){
+        } else if (index < 0) {
             currentSlide = slideCount - 1;
-    }else{
-        currentSlide = index;
+        } else {
+            currentSlide = index;
+        }
+
+        slides.style.transform = `translateX(${-currentSlide * 100}%)`;
+        dots.forEach(dot => dot.classList.remove('active'));
+        dots[currentSlide].classList.add('active');
     }
 
-    slides.style.transform = `translateX(${-currentSlide * 100}%)`;
-    dots.forEach(dot => dot.classList.remove('active'));
-    dots[currentSlide].classList.add('active');
-    }
-
-    prevButton.addEventListener('click', function(){
+    prevButton.addEventListener('click', function() {
         updateSlider(currentSlide - 1);
     });
 
-    nextButton.addEventListener('click', function(){
+    nextButton.addEventListener('click', function() {
         updateSlider(currentSlide + 1);
     });
 
     dots.forEach((dot) => {
-        dot.addEventListener('click', function(){
+        dot.addEventListener('click', function() {
             let index = parseInt(dot.getAttribute('data-index'));
-            
+            updateSlider(index);
         });
-    }); 
+    });
 });
