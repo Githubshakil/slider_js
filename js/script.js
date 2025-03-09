@@ -49,4 +49,8 @@ document.addEventListener('DOMContentLoaded', function() {
             updateSlider(index);
         });
     });
+    // Auto slide functionality
+    setInterval(function() {
+        updateSlider(currentSlide + 1);
+    }, 3000); // Change slide every 3 seconds
 });
