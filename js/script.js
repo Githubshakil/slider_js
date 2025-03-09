@@ -15,11 +15,9 @@ document.addEventListener('DOMContentLoaded', function() {
             dot.classList.add('active');
         }
         dot.classList.add('dot');
-        dot.addEventListener('click', function(){
-            let index = Array.from(dots).indexOf(dot);
-    
-            dotsContainer.appendChild(dot);
-        });
+        dot.attribute('data-index', i);
+        dotsContainer.appendChild(dot);
+
     }
 
     let dots = document.querySelectorAll('.dot');
@@ -46,10 +44,10 @@ document.addEventListener('DOMContentLoaded', function() {
         updateSlider(currentSlide + 1);
     });
 
-    // dots.forEach((dot) => {
-    //     dot.addEventListener('click', function(){
-    //         let index = Array.from(dots).indexOf(dot);
-    //         updateSlider(index);
-    //     });
-    // });
+    dots.forEach((dot) => {
+        dot.addEventListener('click', function(){
+            let index = parseInt(dot.getAttribute('data-index'));
+            
+        });
+    }); 
 });
